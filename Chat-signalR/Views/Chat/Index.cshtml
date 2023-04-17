@@ -1,0 +1,53 @@
+﻿@using Chat_signalR.ViewModels;
+@model Group
+
+
+
+<div class="container margin_30_95">
+    <div class="main_title_2">
+        <span><em></em></span>
+        <h2> نام گروه:@Model.Name  </h2>
+        <h3> تعداد اعضای گروه :@Model.Members.Count() </h3>
+    </div>
+    <div class="row">
+        <div class="col-md-4 ">
+            <div class="box_grid">
+
+                <div>
+                    <ul>
+                        @foreach (var member in Model.Members)
+                        {
+                            <ul>
+                                <li><i class="icon-left-dir"></i> نام کاربری  : <span> @member.Name  </span></li>
+
+                                @foreach (var message in member.Messages)
+                                {
+                                    <li id="messageElement"><i class="icon-left-dir"></i> # <span> @message.Text  </span></li>
+                                }
+                                <li>
+                                        <input type="text" class="form-control newText">
+                                        <input type="submit" class=" btn btn-success" onclick="InsertNewMessage(@member.Id)">
+                              </li>
+
+                            </ul>
+
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- /grid_item -->
+    </div>
+    <!-- /row -->
+</div>
+
+@section Scripts{
+@*    // SignalR library should be rearlier then your Custom js 
+*@    <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+    <script src="~/js/customsignalr.js"></script>
+
+}
+
+

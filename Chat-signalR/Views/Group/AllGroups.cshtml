@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Group>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">نام گروه</th>
+            <th scope="col">تعداد اعضا </th>
+            <th scope="col">عملیات ها</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@Model.Count() </td>
+                <td><a href="/Chat/Index?groupId=@item.Id" class="btn btn-success"> ورود  </a></td>
+            </tr>
+
+        }
+    </tbody>
+</table>
